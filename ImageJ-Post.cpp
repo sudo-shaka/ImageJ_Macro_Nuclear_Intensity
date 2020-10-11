@@ -10,7 +10,7 @@ using namespace std;
 
 
 /*Warning: This was my first attempt at C++ so it is not very elegent, but it does work.. */
-/*Compile using G++ 10.2.0*/
+ 
 
 //returns a vector of csv files found in folder
 vector<string> GetCsvFiles(string dir)
@@ -151,12 +151,12 @@ vector<string> Get_Condtions(string PATH, vector<string> filename)
 
 //This combines data from different conditions into a master vector with vectors of data taken from each replicate
 //** In the future... return a struct with DATA and Conditons names so memeory space of DATA and thier labels are linked
-vector<vector<float>> Get_Data(string PATH,vector<string> filename)
+vector<vector<float> > Get_Data(string PATH,vector<string> filename)
 {  
     int size_v = filename.size(); 
     int i=0;
     vector<string> condition_names;
-    vector<vector<float>> DATA;
+    vector<vector<float> > DATA;
 
 
     for(i=0;i < size_v; i++)
@@ -168,7 +168,6 @@ vector<vector<float>> Get_Data(string PATH,vector<string> filename)
 
         int j=0; bool found = false;
         
-        //cout << IFIN(condition_names,filename) ; 
         while(j <= i-1)
         {
             if(i>=1 && condition_names[i] == condition_names[j])
@@ -284,7 +283,7 @@ int main(int argc, char **argv)
     //Start the calculations
     dir = dir + "/";
     vector<string> filelist = GetCsvFiles(dir);
-    vector<vector<float>> DATA = Get_Data(dir,filelist);   
+    vector<vector<float> > DATA = Get_Data(dir,filelist);   
     vector<string> condition_names = Get_Condtions(dir,filelist);
     
     
@@ -316,7 +315,7 @@ int main(int argc, char **argv)
             for(int j=0; j<DATA.size();j++)
             {
                 int k=0;
-                if (typeid(DATA[j][i]).name() != "f") 
+                if (strcmp(typeid(DATA[j][i]).name(),"f") !=0) //if value is a number (float)
                 {
                     if(DATA[j][i] > 5 && DATA[j][i] < 100000) //if a number is wayyy to high or too low to not put into CSV
                     {
