@@ -10,7 +10,7 @@ using namespace std;
 
 
 /*Warning: This was my first attempt at C++ so it is not very elegent, but it does work.. */
- 
+/*Compile using G++ 10.2.0*/
 
 //returns a vector of csv files found in folder
 vector<string> GetCsvFiles(string dir)
