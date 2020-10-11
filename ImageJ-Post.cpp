@@ -108,6 +108,7 @@ vector<float> Get_Means(string filename, string dir)
             
         }
     }
+
     return(Means);
 }
 /*Simply removes the last 9 elements of a string. 
@@ -144,7 +145,6 @@ vector<string> Get_Condtions(string PATH, vector<string> filename)
             condtion_names.push_back(condition);
         }
     }
-
     return condtion_names;
 
 }
@@ -156,7 +156,7 @@ vector<vector<float> > Get_Data(string PATH,vector<string> filename)
     int size_v = filename.size(); 
     int i=0;
     vector<string> condition_names;
-    vector<vector<float> > DATA;
+    vector<vector<float>> DATA;
 
 
     for(i=0;i < size_v; i++)
@@ -382,6 +382,13 @@ int main(int argc, char **argv)
         
 
     }
+
+    //free up space
+
+    for(int i=0;i<DATA.size();i++)
+        vector<float>().swap(DATA[i]);
+    vector<string>().swap(condition_names);
+    vector<string>().swap(filelist);
 
     cout << "Done!\n";
 
