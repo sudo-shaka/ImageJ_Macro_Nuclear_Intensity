@@ -372,7 +372,7 @@ int main(int argc, char **argv)
             }
             file.close();
         }
-        else if(s = 'n')
+        else if(s == 'n')
         {
             cout << "Not saving percent postive data...\n" << endl;
         }
