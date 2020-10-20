@@ -221,8 +221,10 @@ void Make_Master_CSV(int n_out,bool thresh, double threshold)
 				{
 					if(k == i)
 					{
-						char * pline; pline = strtok(line,","); pline = strtok(NULL,",");
-						fputs(pline,pMASTER_CSV); fputs(",",pMASTER_CSV);
+						char * pline; 
+						pline = strtok(line,","); 
+						pline = strtok(NULL,","); 
+						fputs(pline,pMASTER_CSV);
 						if(thresh)
 						{
 							values[j][i] = strtod(pline,&pline);
@@ -234,6 +236,7 @@ void Make_Master_CSV(int n_out,bool thresh, double threshold)
 						k++;
 					}
 				}
+				fputs(",",pMASTER_CSV);
 				fclose(pCSV);
 			}
 		}
